@@ -442,7 +442,7 @@ db.nuevosUsuarios.updateMany(
     [
        {
           $set: {
-            Salario: { $multiply: ["$Salario", 1.2] } 
+            Salario: { $multiply: ["$Salario", 1.1] } 
           }
        }
     ]
@@ -738,8 +738,7 @@ db.nuevosUsuarios.updateMany(
 //Cambiar la ciudad de residencia de los usuarios con una altura inferior a 160 centímetros a "París".
 db.nuevosUsuarios.updateMany(
     {
-        Nombre: "Pedro"
-        //Estatura:{$lt: 160}
+        Estatura:{$lt: 160}
     },
     {
         $set:{
@@ -759,52 +758,224 @@ db.nuevosUsuarios.updateMany(
 
 
 //Eliminar todos los usuarios que tienen un salario menor que 2000 dólares.
+db.nuevosUsuarios.deleteMany(
+    {Salario: {$lt: 2000}}
+);
+
+
+
 
 //Eliminar usuarios que tienen una edad menor que 25 años.
+db.nuevosUsuarios.deleteMany(
+    {
+        Edad:{$lt: 25}
+    }
+);
+
+
+
 
 //Borrar todos los usuarios que viven en "París".
+db.nuevosUsuarios.deleteMany(
+    {
+        Ciudad:{$eq:"París"}
+    }
+);
+
+
 
 //Eliminar usuarios que tienen un peso superior a 180 libras.
+db.nuevosUsuarios.deleteMany(
+    {
+        Peso:{$gt: 90}
+    }
+);
+
+
+
 
 //Eliminar usuarios que tienen una altura inferior a 160 centímetros.
+db.nuevosUsuarios.deleteMany(
+    {
+        Estatura:{$lt: 160}
+    }
+);
+
+
+
+
+
 
 //Eliminar todos los usuarios que tienen el nombre "John" y el apellido "Doe".
+db.nuevosUsuarios.deleteMany(
+    {
+        $and:[
+            {Nombre:{$eq:"Carlos"}},
+            {Apellido:{$eq:"Smith"}}
+        ]
+    }
+);
+
+
+
 
 //Borrar usuarios que tienen una dirección de correo electrónico específica, por ejemplo, "borrar@riwi.com".
+db.nuevosUsuarios.deleteMany(
+    {
+        Correo:{$eq:"nuevo_correo@riwi.co"}
+    }
+);
+
+
+
+
 
 //Eliminar usuarios que no tienen una dirección de correo electrónico registrada.
+db.nuevosUsuarios.deleteMany(
+    {
+        Correo:{$exists: false}
+    }
+);
+
+
+
 
 //Eliminar usuarios que viven en "Tokyo".
+db.nuevosUsuarios.deleteMany(
+    {
+        Ciudad:{$eq:"Tokyo"}
+    }
+);
+
+
+
 
 //Borrar todos los usuarios que son menores de 18 años.
+db.nuevosUsuarios.deleteMany(
+    {
+        Edad:{$lt: 18}
+    }
+);
+
+
+
 
 //Eliminar usuarios que tienen un salario igual a 0.
+db.nuevosUsuarios.deleteMany(
+    {
+        Salario:{$eq: 0}
+    }
+);
+
+
+
 
 //Borrar usuarios que viven en "New York" y tienen un salario superior a 5000 dólares.
+db.nuevosUsuarios.deleteMany(
+    {
+        $and:[
+            {Ciudad:{$eq:"Bogotá"}},
+            {Salario:{$gt: 4500}}
+        ]
+    }
+);
+
+
+
 
 //Eliminar usuarios que tienen una dirección de correo electrónico que contiene la palabra "spam".
+db.nuevosUsuarios.deleteMany(
+    {
+        Correo:{$regex:/co$/}
+    }
+);
+
+
+
 
 //Borrar usuarios que viven en "Bello" y tienen más de 50 años.
+db.nuevosUsuarios.deleteMany(
+    {
+        $and:[
+            {Ciudad:{$eq:"Medellín"}},
+            {Edad:{$gt: 50}}
+        ]
+    }
+);
+
+
+
+
 
 //Eliminar todos los usuarios que tienen el apellido "González".
+db.nuevosUsuarios.deleteMany(
+    {
+        Apellido:{$eq:"González"}
+    }
+);
+
+
+
+
 
 //Borrar usuarios que tienen una edad superior a 70 años.
+db.nuevosUsuarios.deleteMany(
+    {
+        Edad:{$gt:70}
+    }
+);
+
+
+
 
 //Eliminar usuarios que tienen un país de residencia igual a "Canadá" y un salario inferior a 4000 dólares.
+db.nuevosUsuarios.deleteMany(
+    {
+        $and:[
+            {País:{$eq:"Canadá"}},
+            {Salario:{$lt: 4000}}
+        ]
+    }
+);
+
+
+
 
 //Borrar usuarios que tienen un salario entre 1000 y 2000 dólares.
+db.nuevosUsuarios.deleteMany(
+    {
+        $and:[
+            {Salario:{$gt: 1000}},
+            {Salario:{$lt: 2000}}
+        ]
+    }
+);
+
+
+
+
 
 //Eliminar usuarios que tienen una edad igual a 30 años.
+db.nuevosUsuarios.deleteMany(
+    {
+        Edad:{$eq:30}
+    }
+);
+
+
+
 
 //Borrar usuarios que tienen una altura superior a 190 centímetros.
-
+db.nuevosUsuarios.deleteMany(
+    {
+        Estatura:{$gt: 190}
+    }
+);
 
 
 
 
 db.nuevosUsuarios.find({
-
-    Nombre: "Pedro"
 
 }).pretty()//.count();
 
